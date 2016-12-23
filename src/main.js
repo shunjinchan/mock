@@ -3,12 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import VueWebsocket from 'vue-websocket'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 
 Vue.use(VueWebsocket, 'ws://localhost:9001')
+Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  render: h => h(App),
   template: '<App/>',
   components: { App }
 })
