@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import uuidV4 from 'uuid/v4'
+
 export default {
   name: 'request',
 
@@ -41,12 +43,22 @@ export default {
         type: 'selectRequest',
         req: val
       })
+      this.$store.commit({
+        type: 'selectResponse',
+        uuid: val.uuid
+      })
+    },
+    addResponse (res) {
+      this.$store.commit({
+        type: 'addResponse',
+        res: res
+      })
     }
   },
 
   computed: {
     requests () {
-      return this.$store.state.requests.all
+      return this.$store.state.requests.allReq
     }
   },
 
@@ -55,10 +67,17 @@ export default {
       connect () {
         console.log('connect')
       },
-      changed (msg) {
-        let req = JSON.parse(msg)
-        // console.log(JSON.stringify(req, null, 4))
+      changed (data) {
+        let uuid = uuidV4()
+        // request
+        let req = JSON.parse(data).req
+        req.uuid = uuid
         this.addRequest(req)
+
+        // response
+        let res = JSON.parse(data).res
+        res.uuid = uuid
+        this.addResponse(res)
       }
     }
   }

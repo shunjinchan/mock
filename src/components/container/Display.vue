@@ -7,7 +7,9 @@
       <el-tab-pane label="请求" name="second">
         <request-detail></request-detail>
       </el-tab-pane>
-      <el-tab-pane label="响应" name="third">响应</el-tab-pane>
+      <el-tab-pane label="响应" name="third">
+        <response-detail></response-detail>
+      </el-tab-pane>
       <el-tab-pane label="timeline" name="fourth">timeline</el-tab-pane>
     </el-tabs>
   </div>
@@ -16,13 +18,15 @@
 <script>
 import Overview from './Overview.vue'
 import RequestDetail from './RequestDetail.vue'
+import ResponseDetail from './ResponseDetail.vue'
 
 export default {
   name: 'Display',
 
   components: {
     Overview,
-    RequestDetail
+    RequestDetail,
+    ResponseDetail
   },
 
   data () {
