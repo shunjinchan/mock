@@ -35,12 +35,6 @@ export default {
     }
   },
 
-  methods: {
-    handleCurrentChange (val) {
-      this.currentRow = val
-    }
-  },
-
   computed: {
     requests () {
       return this.$store.state.requests.all

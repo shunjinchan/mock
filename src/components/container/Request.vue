@@ -58,7 +58,7 @@ export default {
 
   computed: {
     requests () {
-      return this.$store.state.requests.allReq
+      return this.$store.state.requests.all
     }
   },
 

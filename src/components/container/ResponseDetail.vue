@@ -1,7 +1,7 @@
 <template>
   <div>  
     <el-table
-      :data="currentRequest"
+      :data="currentResponse"
       highlight-current-row
       @current-change="handleCurrentChange"
       style="width: 100%">
@@ -29,25 +29,25 @@ export default {
   },
 
   computed: {
-    currentRequest () {
-      // let req = this.$store.state.requests.current
+    currentResponse () {
+      let req = this.$store.state.response.current
       let data = []
-      // let process = (req) => {
-      //   for (var attr in req) {
-      //     if (req.hasOwnProperty(attr)) {
-      //       if (typeof req[attr] !== 'object') {
-      //         data.push({
-      //           name: attr,
-      //           value: req[attr]
-      //         })
-      //       } else {
-      //         process(req[attr])
-      //       }
-      //     }
-      //   }
-      // }
+      let process = (req) => {
+        for (var attr in req) {
+          if (req.hasOwnProperty(attr)) {
+            if (typeof req[attr] !== 'object') {
+              data.push({
+                name: attr,
+                value: req[attr]
+              })
+            } else {
+              process(req[attr])
+            }
+          }
+        }
+      }
 
-      // process(req)
+      process(req)
       return data
     }
   }
