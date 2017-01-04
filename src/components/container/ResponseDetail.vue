@@ -1,5 +1,5 @@
 <template>
-  <div>  
+  <div>
     <el-table
       :data="currentResponse"
       highlight-current-row
@@ -32,16 +32,18 @@ export default {
     currentResponse () {
       let req = this.$store.state.response.current
       let data = []
+      let val
       let process = (req) => {
         for (var attr in req) {
           if (req.hasOwnProperty(attr)) {
-            if (typeof req[attr] !== 'object') {
+            val = req[attr]
+            if (typeof val !== 'object') {
               data.push({
                 name: attr,
-                value: req[attr]
+                value: val
               })
             } else {
-              process(req[attr])
+              process(val)
             }
           }
         }

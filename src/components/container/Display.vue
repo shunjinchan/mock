@@ -9,6 +9,7 @@
       </el-tab-pane>
       <el-tab-pane label="响应" name="third">
         <response-detail></response-detail>
+        <mock-response></mock-response>
       </el-tab-pane>
       <el-tab-pane label="timeline" name="fourth">timeline</el-tab-pane>
     </el-tabs>
@@ -19,6 +20,7 @@
 import Overview from './Overview.vue'
 import RequestDetail from './RequestDetail.vue'
 import ResponseDetail from './ResponseDetail.vue'
+import MockResponse from './mockResponse.vue'
 
 export default {
   name: 'Display',
@@ -26,12 +28,13 @@ export default {
   components: {
     Overview,
     RequestDetail,
-    ResponseDetail
+    ResponseDetail,
+    MockResponse
   },
 
   data () {
     return {
-      activeName: 'second'
+      activeName: 'third'
     }
   },
 
@@ -67,11 +70,15 @@ export default {
   width: 100%;
   z-index: 1;
 }
+.display .el-tabs--border-card .el-tab-pane {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 80px;
+}
 .display .el-tabs--border-card .el-tabs__content {
   padding: 0;
   border-top: 30px solid #fff;
   height: 100%;
-  overflow: hidden;
-  overflow-y: scroll;
 }
 </style>

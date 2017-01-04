@@ -34,9 +34,10 @@ export default {
 <style>
 .container {
   width: 100%;
+  height: 100%;
   position: absolute;
+  top: 0;
   bottom: 0;
-  height: 500px;
 }
 .el-row, .main, .aside, .el-col {
   height: 100%;
