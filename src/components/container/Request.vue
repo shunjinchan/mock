@@ -1,33 +1,51 @@
 <template>
   <div class="request">
-    <el-tabs :active-name="activeName" type="border-card">
-      <el-tab-pane label="按顺序" name="first">
-        <el-table
-          :data="requests"
-          highlight-current-row
-          @current-change="selectRequest"
-          style="width: 100%">
-          <el-table-column
-            property="hostname"
-            label="请求">
-          </el-table-column>
-        </el-table>
-      </el-tab-pane>
-      <el-tab-pane label="按域名" name="second">按域名</el-tab-pane>
-    </el-tabs>
+    <table class="table-striped">
+      <thead>
+        <tr>
+          <th>hostname</th>
+          <th>Kind</th>
+          <th>File Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="request in requests" @click="selectRequest(request)">
+          <td>{{ request.hostname }}</td>
+          <td>CSS</td>
+          <td>28K</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <el-dialog title="" v-model="dialogRequestVisible" size="large" custom-class="dialog-request" :modal="false" top="10%">
+      <el-tabs type="border-card">
+        <el-tab-pane label="请求详情">
+          <request-detail></request-detail>
+        </el-tab-pane>
+        <el-tab-pane label="响应详情">
+          <response-detail></response-detail>
+        </el-tab-pane>
+      </el-tabs>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import uuidV4 from 'uuid/v4'
+import RequestDetail from './RequestDetail.vue'
+import ResponseDetail from './ResponseDetail.vue'
 
 export default {
-  name: 'request',
+  name: 'Request',
+
+  components: {
+    RequestDetail,
+    ResponseDetail
+  },
 
   data () {
     return {
-      activeName: 'first',
-      count: 0
+      dialogRequestVisible: false
     }
   },
 
@@ -38,8 +56,14 @@ export default {
         req: req
       })
     },
+    addResponse (res) {
+      this.$store.commit({
+        type: 'addResponse',
+        res: res
+      })
+    },
     selectRequest (val) {
-      this.currentRow = val
+      this.dialogRequestVisible = true
       this.$store.commit({
         type: 'selectRequest',
         req: val
@@ -47,12 +71,6 @@ export default {
       this.$store.commit({
         type: 'selectResponse',
         uuid: val.uuid
-      })
-    },
-    addResponse (res) {
-      this.$store.commit({
-        type: 'addResponse',
-        res: res
       })
     }
   },
@@ -86,36 +104,24 @@ export default {
 </script>
 
 <style>
-.request {
-  height: 100%;
-  overflow: hidden;
-}
-.request * {
-  box-sizing: border-box;
-}
-.request .el-tabs__item {
-  height: 32px;
-  line-height: 32px;
-}
-.request .el-tabs--border-card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-.request .el-tabs__header {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-.request .el-tabs--border-card .el-tabs__content {
-  padding: 0;
-  border-top: 30px solid #fff;
-  height: 100%;
-  overflow: hidden;
-  overflow-y: scroll;
-}
-.request .el-table__header-wrapper {
-  display: none;
-}
+  .dialog-request .el-dialog__headerbtn {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    z-index: 1;
+  }
+  .dialog-request .el-tabs {
+    width: 100%;
+    box-shadow: none;
+  }
+  .dialog-request .el-dialog__header {
+    padding: 0 20px;
+  }
+  .dialog-request .el-dialog__body {
+    padding: 0;
+  }
+  .dialog-request .el-tabs--border-card {
+    border: none;
+    border-top: 1px solid #d3dce6;
+  }
 </style>

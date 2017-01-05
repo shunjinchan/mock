@@ -1,0 +1,47 @@
+@charset 'UTF-8';
+
+// _setting.scss 文件里的变量不允许随意修改
+
+// font相关
+//-----------------------------------------------------
+$font-size:                       .28rem !default;
+$font-line-height:                1.5 !default;
+$font-family:                     "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif !default;
+
+
+// 主色
+//-----------------------------------------------------
+$color-primary:                            #1abc9c !default;
+$color-danger:                             #f6383a !default;
+$color-warning:                            #f60 !default;
+$color-success:                            #4cd964 !default;
+
+$color-primary-active:                     #17a98c !default;
+$color-danger-active:                      darken($color-danger, 10%) !default;
+$color-warning-active:                     darken($color-warning, 10%) !default;
+$color-success-active:                     darken($color-success, 10%) !default;
+
+$color-border:                             #dbdbdb !default;  // 分割线的颜色
+$color-bg:                                 #f3f4f5 !default; // 背景色
+$color-text:                               #3d4145 !default; // 文案色
+$color-text-secondary:                     #5f646e !default; // 次级文案
+$color-text-gray:                          #999 !default; // 灰色文案
+$color-text-gray-light:                    #ccc !default; // 更灰色文案
+
+
+// 链接色
+$color-link:                               $color-text !default; // 链接色有可能不同于主色
+$color-link-active:                        darken($color-text, 10%) !default; // 链接色有可能不同于主色
+
+
+// z-index
+//-----------------------------------------------------
+$zindex-dropdown:          1000 !default;
+$zindex-navbar-fixed:      1020 !default;
+$zindex-backdrop:          1030 !default;
+$zindex-popup:             1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-dialog:            1070 !default;
+$zindex-loader:            1080 !default;
+$zindex-toast:             1090 !default;

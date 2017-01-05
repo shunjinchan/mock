@@ -4,8 +4,10 @@
       :data="currentRequest"
       highlight-current-row
       @current-change="handleCurrentChange"
-      style="width: 100%">
+      style="width: 100%"
+      height="400">
       <el-table-column
+        fixed
         property="name"
         label="属性"
         width="120">
