@@ -22,3 +22,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .el-dialog__wrapper {
+    z-index: 1000;
+  }
+</style>

@@ -1,0 +1,12 @@
+[
+  {
+    "url": "http://m.vip.com/server.html?rpc&method=getBrandList",
+    "localUrl": "/Users/shunjinchan/github/mock/store/map/brandList.json",
+    "uuid": "1"
+  },
+  {
+    "url": "http://m.vip.com/server.html?rpc&method=pageCache",
+    "localUrl": "/Users/shunjinchan/github/mock/store/map/pageCache.json",
+    "uuid": "2"
+  }
+]

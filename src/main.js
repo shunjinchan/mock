@@ -3,16 +3,18 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import VueWebsocket from 'vue-websocket'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
 import './base/css/photon.min.css'
-import routes from './routes'
+import routes from './routes/index.js'
 
 Vue.use(VueWebsocket, 'ws://localhost:9001')
 Vue.use(ElementUI)
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 const router = new VueRouter({
   routes
@@ -24,5 +26,5 @@ new Vue({
   render: h => h(App),
   template: '<App/>',
   components: { App },
-  router
+  router: router
 })
