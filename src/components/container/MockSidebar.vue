@@ -29,6 +29,7 @@
     </div>
 
     <div class="map-action">
+      <input type="file" @change="addMap">
       <button class="btn btn-default">
         Add
       </button>
@@ -77,6 +78,10 @@ export default {
           uuid: uuid
         }
       })
+    },
+    addMap (e) {
+      console.log(e.target.files[0])
+      console.log(e.target.value)
     }
   }
 }
