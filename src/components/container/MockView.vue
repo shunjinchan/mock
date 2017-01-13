@@ -4,7 +4,9 @@
       <div class="pane-sm sidebar">
         <mock-sidebar></mock-sidebar>
       </div>
-      <div class="pane"></div>
+      <div class="pane">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>

@@ -53,7 +53,7 @@ export default {
   },
 
   created () {
-    this.fetchMap()
+    this.fetchMapList()
   },
 
   methods: {
@@ -61,7 +61,7 @@ export default {
       console.log(this.mapChecked)
     },
     // fetch map list
-    fetchMap () {
+    fetchMapList () {
       this.$http.get(`${config.server}/map`).then((res) => {
         if (res.status === 200) {
           this.mapList = res.body
@@ -71,12 +71,11 @@ export default {
       })
     },
     selectMap (uuid) {
-      this.$http.get(`${config.server}/map/${uuid}`).then((res) => {
-        if (res.status === 200) {
-          console.log(res.data)
+      this.$router.push({
+        name: 'map',
+        params: {
+          uuid: uuid
         }
-      }, (res) => {
-        console.log(res)
       })
     }
   }
